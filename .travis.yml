@@ -9,4 +9,4 @@ before_script:
 deploy:
   provider: npm
   email: "heavenly.beta@gmail.com"
-  api_key: api_key
+  api_key: $api_key
