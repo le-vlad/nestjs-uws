@@ -4,7 +4,6 @@ node_js:
 
 before_script:
   - npm install --saveDev
-  - npm install -g typescript
 
 deploy:
   provider: npm
