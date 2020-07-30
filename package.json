@@ -1,6 +1,6 @@
 {
   "name": "nestjs-uws",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "NestJS UWebSocket.js adapter",
   "author": "Vladislav Len <len.vladislavs@gmail.com>",
   "license": "MIT",
