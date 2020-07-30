@@ -1,5 +1,5 @@
 {
-  "name": "@nestplatform/uws-adapter",
+  "name": "nestjs-uws",
   "version": "1.0.0",
   "description": "NestJS UWebSocket.js adapter",
   "author": "Vladislav Len <len.vladislavs@gmail.com>",
