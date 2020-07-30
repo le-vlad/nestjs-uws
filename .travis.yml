@@ -2,6 +2,10 @@ language: node_js
 node_js:
   - "12.13"
 
+before_script:
+  - npm install --saveDev
+  - npm install -g typescript
+
 deploy:
   provider: npm
   email: "heavenly.beta@gmail.com"
