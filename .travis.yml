@@ -5,4 +5,4 @@ node_js:
 deploy:
   provider: npm
   email: "heavenly.beta@gmail.com"
-  api_key: "YOUR_AUTH_TOKEN"
+  api_key: api_key
