@@ -13,7 +13,7 @@
 <h3 align="center">NestJS uWebSocket.js gateway adapter</h3>
 
 <div align="center">
-  ![Node.js CI](https://github.com/heavenlyteam/nestjs-uws/workflows/Build stage/badge.svg)
+  <img src="https://github.com/heavenlyteam/nestjs-uws/workflows/Build/badge.svg" alt="">
 </div>
 
 ### Installation
