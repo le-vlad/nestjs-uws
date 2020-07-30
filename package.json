@@ -1,11 +1,11 @@
 {
   "name": "@nestplatform/uws-adapter",
   "version": "1.0.0",
-  "description": "NestJS npm package starter",
-  "author": "John Biundo <johnfbiundo@gmail.com>",
+  "description": "NestJS UWebSocket.js adapter",
+  "author": "Vladislav Len <len.vladislavs@gmail.com>",
   "license": "MIT",
   "readmeFilename": "README.md",
-  "main": "dist/test.js",
+  "main": "dist/",
   "files": [
     "dist/**/*",
     "*.md"
@@ -29,7 +29,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/nestjsplus/nestjs-package-starter"
+    "url": "https://github.com/heavenlyteam/nestjs-uws"
   },
   "peerDependencies": {
     "@nestjs/common": "^6.0.0"
