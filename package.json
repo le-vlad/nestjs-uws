@@ -39,7 +39,7 @@
   "dependencies": {
     "@nestjs/websockets": "^7.4.0",
     "rxjs": "^6.6.0",
-    "uWebSockets.js": "github:uNetworking/uWebSockets.js#v18.3.0"
+    "uWebSockets.js": "git+https://github.com/uNetworking/uWebSockets.git#v18.3.0"
   },
   "devDependencies": {
     "@nestjs/common": "^7.3.2",
