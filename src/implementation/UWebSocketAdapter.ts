@@ -6,6 +6,7 @@ import * as UWS from 'uWebSockets.js';
 import { Observable, fromEvent, EMPTY } from 'rxjs';
 import { mergeMap, filter } from 'rxjs/operators';
 import * as events from 'events';
+import { UWSBuilder } from './instance.builder';
 
 export class UWebSocketAdapter implements WebSocketAdapter {
   private instanceConfiguration: ICreateServerArgs | ICreateServerSecureArgs = null;
@@ -14,7 +15,12 @@ export class UWebSocketAdapter implements WebSocketAdapter {
 
   constructor(args: ICreateServerArgs | ICreateServerSecureArgs) {
     this.instanceConfiguration = args;
-    this.instance = UWS.App();
+    // @ts-ignore
+    if (args.sslKey) {
+      this.instance = UWSBuilder.buildSSLApp(args as ICreateServerSecureArgs);
+    } else {
+      this.instance = UWSBuilder.buildApp(args);
+    }
   }
 
   bindClientConnect(server: UWS.TemplatedApp, callback: Function): any {

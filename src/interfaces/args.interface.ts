@@ -2,8 +2,7 @@ export interface ICreateServerArgs {
   port: number;
 }
 
-export interface ICreateServerSecureArgs {
-  port: number;
+export interface ICreateServerSecureArgs extends ICreateServerArgs {
   sslKey: string;
   sslCert: string;
 }
