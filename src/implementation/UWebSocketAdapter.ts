@@ -1,20 +1,24 @@
 import { WebSocketAdapter } from '@nestjs/common';
 import { MessageMappingProperties } from '@nestjs/websockets';
-import { ICreateServerArgs, ICreateServerOptionsArgs, ICreateServerSecureArgs } from '../interfaces';
+import { ICreateServerArgs, ICreateServerSecureArgs } from '../interfaces';
 
 import * as UWS from 'uWebSockets.js';
 import { Observable, fromEvent, EMPTY } from 'rxjs';
 import { mergeMap, filter } from 'rxjs/operators';
 import * as events from 'events';
+import { UWSBuilder } from './instance.builder';
 
 export class UWebSocketAdapter implements WebSocketAdapter {
-  private instanceConfiguration: ICreateServerArgs | ICreateServerSecureArgs = null;
   private instance: UWS.TemplatedApp = null;
   private listenSocket: string = null;
 
   constructor(args: ICreateServerArgs | ICreateServerSecureArgs) {
-    this.instanceConfiguration = args;
-    this.instance = UWS.App();
+    // @ts-ignore
+    if (args.sslKey) {
+      this.instance = UWSBuilder.buildSSLApp(args as ICreateServerSecureArgs);
+    } else {
+      this.instance = UWSBuilder.buildApp(args);
+    }
   }
 
   bindClientConnect(server: UWS.TemplatedApp, callback: Function): any {
@@ -60,12 +64,12 @@ export class UWebSocketAdapter implements WebSocketAdapter {
     return process(messageHandler.callback(message.data));
   }
 
-  close(server: UWS.TemplatedApp): any {
-    UWS.us_listen_socket_close(server);
+  close(): any {
+    UWS.us_listen_socket_close(this.listenSocket);
     this.instance = null;
   }
 
-  async create(port: number, options?: ICreateServerOptionsArgs): Promise<any> {
+  async create(port: number): Promise<UWS.TemplatedApp> {
     return new Promise((resolve, reject) => this.instance.listen(port, (token) => {
       if (token) {
         this.listenSocket = token;
