@@ -1,6 +1,6 @@
 {
   "name": "nestjs-uws",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "NestJS UWebSocket.js adapter",
   "author": "Vladislav Len <len.vladislavs@gmail.com>",
   "license": "MIT",
@@ -34,12 +34,13 @@
     "url": "https://github.com/heavenlyteam/nestjs-uws"
   },
   "peerDependencies": {
-    "@nestjs/common": "^7.4.0"
+    "@nestjs/common": "^7.4.0",
+    "tslib": "^2.3.1"
   },
   "dependencies": {
     "@nestjs/websockets": "^7.4.0",
     "rxjs": "^6.6.0",
-    "uwebsockets.js": "^19.0.0-docs"
+    "uWebSockets.js": "uNetworking/uWebSockets.js#v20.4.0"
   },
   "devDependencies": {
     "@nestjs/common": "^7.3.2",
@@ -59,6 +60,7 @@
     "ts-node": "^8.6.2",
     "tsc-watch": "2.2.1",
     "tsconfig-paths": "^3.9.0",
+    "tslib": "^2.3.1",
     "typescript": "^3.7.4"
   },
   "jest": {
