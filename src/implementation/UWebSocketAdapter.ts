@@ -11,8 +11,10 @@ import { UWSBuilder } from './instance.builder';
 export class UWebSocketAdapter implements WebSocketAdapter {
   private instance: UWS.TemplatedApp = null;
   private listenSocket: string = null;
+  private port: number = 0;
 
   constructor(args: ICreateServerArgs | ICreateServerSecureArgs) {
+    this.port = args.port;
     // @ts-ignore
     if (args.sslKey) {
       this.instance = UWSBuilder.buildSSLApp(args as ICreateServerSecureArgs);
@@ -69,8 +71,8 @@ export class UWebSocketAdapter implements WebSocketAdapter {
     this.instance = null;
   }
 
-  async create(port: number): Promise<UWS.TemplatedApp> {
-    return new Promise((resolve, reject) => this.instance.listen(port, (token) => {
+  async create(): Promise<UWS.TemplatedApp> {
+    return new Promise((resolve, reject) => this.instance.listen(this.port, (token) => {
       if (token) {
         this.listenSocket = token;
         resolve(this.instance);
